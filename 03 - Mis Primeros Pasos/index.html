@@ -9,22 +9,25 @@
     <script src='js/main.js'></script>
     <script>
         function saludar(){
-            alert("Has seleccionado saludar!!!");
             // # CSS -> llamo a un elemento HTML
             //   JS -> llamo a un elemento HTML
-            let txtLogin = document.getElementById("txtLogin").value;
-            if(txtLogin===""){
-                alert("Has dejado la casilla vacía!!");
+            let txtEmail = document.getElementById("txtEmail").value;
+            let txtPassword = document.getElementById("txtPassword").value;
+            if(txtEmail==="" && txtPassword===""){
+                alert("Has dejado las casillas en blanco");
+            } else if (txtEmail==="" || txtPassword==="") {
+                alert("Has dejado una casilla en blanco");
             } else {
-                alert("Tu usuario Login es: " + txtLogin + "!!");
+                alert("Login correcto");
             }
         }
     </script>
 </head>
 <body>
     <h1>PRIMERA FUNCIÓN JS</h1>
-    <h4>Dime tu nombre</h4>
-    <input type="text" id="txtLogin"/>
-    <input type="button" value="Login" onclick="saludar();" />
+    <h4>Email: <input type="text" id="txtEmail"/></h4>
+    <h4>Password: <input type="text" id="txtPassword"/></h4>
+    
+    <input type="button" value="Enviar" onclick="saludar();" />
 </body>
 </html>
