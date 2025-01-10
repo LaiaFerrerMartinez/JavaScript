@@ -12,8 +12,12 @@
             alert("Has seleccionado saludar!!!");
             // # CSS -> llamo a un elemento HTML
             //   JS -> llamo a un elemento HTML
-            let txtLogin = document.getElementbyId("txtLogin").value;
-            
+            let txtLogin = document.getElementById("txtLogin").value;
+            if(txtLogin===""){
+                alert("Has dejado la casilla vacía!!");
+            } else {
+                alert("Tu usuario Login es: " + txtLogin + "!!");
+            }
         }
     </script>
 </head>
