@@ -21,14 +21,22 @@ const pool = new Pool({
       // Comprueba la documentación de AWS RDS para obtener los detalles exactos.
     },
   });
-  app.get("/peliculass", async (req, res)=>{
-    const {rows} = await pool.query(
-        "SELECT * FROM peliculas;"
-    );
-    res.json(rows);
-    // res.send("Bienvenido a mi API DISNEY");
-});
-    
+    app.get("/peliculas", async (req, res)=>{
+        const {rows} = await pool.query(
+            "SELECT * FROM peliculas;"
+        );
+        res.json(rows);
+        // res.send("Bienvenido a mi API DISNEY");
+    });
+
+    // Seleccionar una película por su título desde aquí
+    app.get("/peliculas/:title", async (req, res)=>{
+        const titulo = req.params.title;
+        const {rows} = await pool.query(
+            "SELECT * FROM peliculas WHERE titulo = $1;", [titulo]
+        );
+        res.json(rows);
+    })  
 
     // CONSULTAR -> SELECT * FROM USUARIOS, PELICULAS
     app.get("/usuarios/", (req, res) =>{
