@@ -49,6 +49,16 @@ const pool = new Pool({
         // res.send("Bienvenido a mi API DISNEY");
     });
 
+    app.put("/peliculas", async (req, res)=>{
+        const {id, titulo, director, anio } = req.body;
+        const {rows} = await pool.query(
+            "UPDATE peliculas SET titulo = $2, director = $3, anio = $4 WHERE id = $1 RETURNING *",
+            [id, titulo, director , anio]
+        );
+        res.json(rows);
+        // res.send("Bienvenido a mi API DISNEY");
+    });
+
     // CONSULTAR -> SELECT * FROM USUARIOS, PELICULAS
     app.get("/usuarios/", (req, res) =>{
         // req -> no lo necesito
