@@ -7,6 +7,7 @@ const { Pool } = require("pg");      // HABLAR BD PG DE AWS
 // INSTANCIAR LOS OBJETOS QUE NECESITAMOS
 const app = express();
 const port = 3000;
+app.use(express.json());
 // Configuración de la base de datos
 const pool = new Pool({
     user: "postgres",
@@ -37,6 +38,16 @@ const pool = new Pool({
         );
         res.json(rows);
     })  
+
+    app.post("/peliculas", async (req, res)=>{
+        const {id, titulo, director, anio } = req.body;
+        const {rows} = await pool.query(
+            "INSERT INTO PELICULAS (id, titulo, director, anio) VALUES ($1, $2, $3, $4) RETURNING *",
+            [id, titulo, director , anio]
+        );
+        res.json(rows);
+        // res.send("Bienvenido a mi API DISNEY");
+    });
 
     // CONSULTAR -> SELECT * FROM USUARIOS, PELICULAS
     app.get("/usuarios/", (req, res) =>{
