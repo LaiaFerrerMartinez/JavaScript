@@ -12,7 +12,7 @@ const pool = new Pool({
     user: "postgres",
     host: "netflix-001.c3smyaeku6nl.us-east-1.rds.amazonaws.com",
     database: "postgres",
-    password: "LUCASLUCAS", // Considera usar variables de entorno para gestionar contraseñas
+    password: "rerreF_2013", // Considera usar variables de entorno para gestionar contraseñas
     port: 5432,
     ssl: {
       rejectUnauthorized: false, // Cambia a false si tienes problemas de certificados pero trata de evitarlo por seguridad
