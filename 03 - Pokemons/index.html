@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Películas</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <input type="button" onclick="cargarPeliculas()" value="Cargar Películas"/>
+    
+    <!-- Filtro de Género -->
+    <select id="filtro-genero">
+        <option value="">Seleccionar Género</option>
+        <option value="Drama">Drama</option>
+        <option value="Acción">Acción</option>
+        <option value="Historia">Historia</option>
+        <option value="Crimen">Crimen</option>
+    </select>
+    <input type="button" onclick="filtrarPorGenero()" value="Filtrar por Género"/>
+
+    <h1>Lista de Películas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Director</th>
+                <th>Año</th>
+                <th>Género</th>
+            </tr>
+        </thead>
+        <tbody id="peliculas-table">
+            <!-- Aquí se llenarán las películas desde la API -->
+        </tbody>
+    </table>
+</body>
+</html>
