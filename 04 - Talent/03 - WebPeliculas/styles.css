@@ -1,48 +1,147 @@
+/* Global */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
+/* Header */
 header {
-    background-color: #333;
+    background-color: #527ac4;
     color: white;
     text-align: center;
-    padding: 1rem 0;
+    padding: 2rem 0;
+    box-shadow: 0 4px 6px rgba(33, 61, 216, 0.1);
 }
 
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* Main */
 main {
-    padding: 1rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
+/* Filtros */
 #filtros {
-    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem; /* Espacio entre los elementos */
+    margin-top: 1rem;
 }
 
+#filtros select,
+#filtros button {
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.4s, border 0.3s;
+}
+
+/* Ajuste para el botón de 'Filtrar' y el botón 'Todos' */
+#filtros #filtrarPorGenero {
+    margin-right: 20px; /* Espacio entre el texto 'Filtrar' y el botón de 'Todos' */
+}
+
+#accesos-rapidos button {
+    border-color: #3e5d96;
+    background-color: #527ac4;
+    color: white;
+    margin-left: 10px;
+}
+
+#accesos-rapidos button:hover {
+    background-color: #fff;
+    color: #333;
+    border-color: #3e5d96;
+}
+
+/* Lista de películas */
 #peliculas {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 #peliculas li {
     background-color: white;
-    margin-bottom: 0.5rem;
-    padding: 1rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    border-radius: 8px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+#peliculas li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#peliculas li span {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Botones de acceso rápido */
 button {
-    margin: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: #333;
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+    background-color: #34495e;
     color: white;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid transparent;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #1abc9c;
+    transform: scale(1.05);
+}
+
+/* Respuesta a dispositivos móviles */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+
+    #filtros {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #filtros select,
+    #filtros button {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    #peliculas li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #peliculas li span {
+        margin-top: 0.5rem;
+    }
 }
