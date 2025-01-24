@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Películas y JSON</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Listado de Películas</h1>
+
+  <!-- Contenedor donde se cargarán todas las películas -->
+  <div id="contenedor-peliculas">
+    <!-- Aquí se cargarán las películas desde el JSON -->
+  </div>
+
+  <!-- Botón para mostrar solo los títulos -->
+  <button id="mostrar-titulos">Mostrar Solo Títulos</button>
+
+  <div id="contenedor-titulos">
+    <!-- Aquí se mostrarán solo los títulos -->
+  </div>
+
+  <!-- Campo de texto para ingresar el género y filtrar -->
+  <label for="generoSeleccionado">Escribe el Género:</label>
+  <input type="text" id="generoSeleccionado" placeholder="Escribe el género para filtrar"/>
+
+  <input type="button" onclick="filtrarPorGenero()" value="Filtrar por Género"/>
+
+  <script src="script.js"></script>
+</body>
+</html>
