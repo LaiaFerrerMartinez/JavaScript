@@ -1,0 +1,43 @@
+[
+    {
+      "titulo": "El Rey León",
+      "año": 1994,
+      "genero": "Animación"
+    },
+    {
+      "titulo": "Matrix",
+      "año": 1999,
+      "genero": "Ciencia Ficción"
+    },
+    {
+      "titulo": "Inception",
+      "año": 2010,
+      "genero": "Acción"
+    },
+    {
+      "titulo": "Avengers: Endgame",
+      "año": 2019,
+      "genero": "Acción"
+    },
+    {
+      "titulo": "Titanic",
+      "año": 1997,
+      "genero": "Romance"
+    },
+    {
+      "titulo": "El Conjuro",
+      "año": 2013,
+      "genero": "Terror"
+    },
+    {
+      "titulo": "Shrek",
+      "año": 2001,
+      "genero": "Animación"
+    },
+    {
+      "titulo": "John Wick",
+      "año": 2014,
+      "genero": "Acción"
+    }
+  ]
+  
