@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Películas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cartelera de Películas</h1>
+
+        <!-- Filtros -->
+        <div id="filters">
+            <select id="generoSelect">
+                <option value="">Todos</option>
+                <option value="Animación">Animación</option>
+                <option value="Acción">Acción</option>
+                <option value="Ciencia Ficción">Ciencia Ficción</option>
+                <option value="Drama">Drama</option>
+                <option value="Romance">Romance</option>
+            </select>
+
+            <!-- Botones de género -->
+            <div>
+                <button class="btnFiltro" data-genero="Animación">Animación</button>
+                <button class="btnFiltro" data-genero="Acción">Acción</button>
+                <button class="btnFiltro" data-genero="Ciencia Ficción">Ciencia Ficción</button>
+                <button class="btnFiltro" data-genero="Drama">Drama</button>
+                <button class="btnFiltro" data-genero="Romance">Romance</button>
+            </div>
+
+            <!-- Botones para ordenar -->
+            <div id="sortButtons">
+                <button id="sortAsc">Ordenar por Año Ascendente</button>
+                <button id="sortDesc">Ordenar por Año Descendente</button>
+            </div>
+        </div>
+
+        <!-- Campo de búsqueda -->
+        <div id="searchInput">
+            <input type="text" id="search" placeholder="Buscar por título">
+            <button id="searchBtn">Buscar</button>
+        </div>
+
+        <!-- Mensaje de no resultados -->
+        <div id="noResults">
+            <p>No se encontraron películas que coincidan con los filtros.</p>
+        </div>
+
+        <!-- Lista de películas -->
+        <div class="movie-grid" id="movieList">
+            <!-- Las películas se agregarán aquí dinámicamente -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+[
+    { "titulo": "El Rey León", "genero": "Animación", "año": 1994, "poster": "https://m.media-amazon.com/images/M/MV5BNjExYTQwY2EtMDRkYi00ZWIzLTkwZDUtYjVmODYxMDUwNDI5XkEyXkFqcGc@._V1_.jpg" },
+    { "titulo": "Matrix", "genero": "Ciencia Ficción", "año": 1999, "poster": "https://pics.filmaffinity.com/Matrix-155050517-large.jpg" },
+    { "titulo": "Titanic", "genero": "Romance", "año": 1997, "poster": "https://pics.filmaffinity.com/Titanic-321994924-large.jpg" },
+    { "titulo": "Avengers: Endgame", "genero": "Acción", "año": 2019, "poster": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg" },
+    { "titulo": "Toy Story", "genero": "Animación", "año": 1995, "poster": "https://pics.filmaffinity.com/Toy_Story-626273371-large.jpg" },
+    { "titulo": "Inception", "genero": "Ciencia Ficción", "año": 2010, "poster": "https://pics.filmaffinity.com/Origen-652954101-large.jpg" },
+    { "titulo": "The Dark Knight", "genero": "Acción", "año": 2008, "poster": "https://m.media-amazon.com/images/I/91KkWf50SoL.jpg" },
+    { "titulo": "Forrest Gump", "genero": "Drama", "año": 1994, "poster": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
+    { "titulo": "Harry Potter and the Philosopher's Stone", "genero": "Animación", "año": 1994, "poster": "https://img.posterstore.com/zoom/wb0101-8harrypotter-thephilosophersstoneno150x70.jpg?auto=compress%2Cformat&fit=max&w=3840" },
+    { "titulo": "Interstellar", "genero": "Ciencia Ficción", "año": 2014, "poster": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
+    { "titulo": "Gladiator", "genero": "Acción", "año": 2000, "poster": "https://i.pinimg.com/736x/57/ab/d4/57abd415a5771a0d0d0371a5ec8a8ee5.jpg" },
+    { "titulo": "The Godfather", "genero": "Drama", "año": 1972, "poster": "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
+    { "titulo": "The Shawshank Redemption", "genero": "Drama", "año": 1994, "poster": "https://via.placeholder.com/300x450?text=The+Shawshank+Redemption" },
+    { "titulo": "The Matrix Reloaded", "genero": "Ciencia Ficción", "año": 2003, "poster": "https://via.placeholder.com/300x450?text=The+Matrix+Reloaded" },
+    { "titulo": "Mad Max: Fury Road", "genero": "Acción", "año": 2015, "poster": "https://via.placeholder.com/300x450?text=Mad+Max+Fury+Road" },
+    { "titulo": "Frozen", "genero": "Animación", "año": 2013, "poster": "https://via.placeholder.com/300x450?text=Frozen" },
+    { "titulo": "The Avengers", "genero": "Acción", "año": 2012, "poster": "https://via.placeholder.com/300x450?text=The+Avengers" },
+    { "titulo": "Pulp Fiction", "genero": "Drama", "año": 1994, "poster": "https://via.placeholder.com/300x450?text=Pulp+Fiction" },
+    { "titulo": "Guardians of the Galaxy", "genero": "Acción", "año": 2014, "poster": "https://via.placeholder.com/300x450?text=Guardians+of+the+Galaxy" },
+    { "titulo": "Spider-Man: No Way Home", "genero": "Acción", "año": 2021, "poster": "https://via.placeholder.com/300x450?text=Spider-Man+No+Way+Home" }
+]
