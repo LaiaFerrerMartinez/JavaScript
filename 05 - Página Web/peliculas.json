@@ -11,12 +11,12 @@
     { "titulo": "Interstellar", "genero": "Ciencia Ficción", "año": 2014, "poster": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
     { "titulo": "Gladiator", "genero": "Acción", "año": 2000, "poster": "https://i.pinimg.com/736x/57/ab/d4/57abd415a5771a0d0d0371a5ec8a8ee5.jpg" },
     { "titulo": "The Godfather", "genero": "Drama", "año": 1972, "poster": "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" },
-    { "titulo": "The Shawshank Redemption", "genero": "Drama", "año": 1994, "poster": "https://via.placeholder.com/300x450?text=The+Shawshank+Redemption" },
-    { "titulo": "The Matrix Reloaded", "genero": "Ciencia Ficción", "año": 2003, "poster": "https://via.placeholder.com/300x450?text=The+Matrix+Reloaded" },
-    { "titulo": "Mad Max: Fury Road", "genero": "Acción", "año": 2015, "poster": "https://via.placeholder.com/300x450?text=Mad+Max+Fury+Road" },
-    { "titulo": "Frozen", "genero": "Animación", "año": 2013, "poster": "https://via.placeholder.com/300x450?text=Frozen" },
-    { "titulo": "The Avengers", "genero": "Acción", "año": 2012, "poster": "https://via.placeholder.com/300x450?text=The+Avengers" },
-    { "titulo": "Pulp Fiction", "genero": "Drama", "año": 1994, "poster": "https://via.placeholder.com/300x450?text=Pulp+Fiction" },
-    { "titulo": "Guardians of the Galaxy", "genero": "Acción", "año": 2014, "poster": "https://via.placeholder.com/300x450?text=Guardians+of+the+Galaxy" },
-    { "titulo": "Spider-Man: No Way Home", "genero": "Acción", "año": 2021, "poster": "https://via.placeholder.com/300x450?text=Spider-Man+No+Way+Home" }
+    { "titulo": "The Shawshank Redemption", "genero": "Drama", "año": 1994, "poster": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_.jpg" },
+    { "titulo": "The Matrix Reloaded", "genero": "Ciencia Ficción", "año": 2003, "poster": "https://m.media-amazon.com/images/M/MV5BNjAxYjkxNjktYTU0YS00NjFhLWIyMDEtMzEzMTJjMzRkMzQ1XkEyXkFqcGc@._V1_.jpg" },
+    { "titulo": "Mad Max: Fury Road", "genero": "Acción", "año": 2015, "poster": "https://pics.filmaffinity.com/Mad_Max_Furia_en_la_carretera-397817030-large.jpg" },
+    { "titulo": "Frozen", "genero": "Animación", "año": 2013, "poster": "https://play-lh.googleusercontent.com/shSi5vvlZrRAQ6G8vt6LX5v008jIt7gilGWgnGxSG8IhkPO4eVVOqKW-pO4k5nfDaSg" },
+    { "titulo": "The Avengers", "genero": "Acción", "año": 2012, "poster": "https://i.ebayimg.com/00/s/MTUwMFgxMDEy/z/rKsAAOSwv3ZiLKB1/$_57.JPG?set_id=8800005007" },
+    { "titulo": "Pulp Fiction", "genero": "Drama", "año": 1994, "poster": "https://static.posters.cz/image/750/1288.jpg" },
+    { "titulo": "Guardians of the Galaxy", "genero": "Acción", "año": 2014, "poster": "https://m.media-amazon.com/images/I/81YZ8slCyuL.jpg" },
+    { "titulo": "Spider-Man: No Way Home", "genero": "Acción", "año": 2021, "poster": "https://i.ebayimg.com/00/s/MTYwMFgxMDc5/z/J68AAOSwqsRjBVNr/$_57.JPG?set_id=880000500F" }
 ]
