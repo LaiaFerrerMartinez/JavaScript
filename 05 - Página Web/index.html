@@ -9,7 +9,7 @@
 <body>
 
     <div class="container">
-        <h1>Cartelera de Películas</h1>
+        <h1>Películas</h1>
 
         <!-- Filtros -->
         <div id="filters">
@@ -22,6 +22,12 @@
                 <option value="Romance">Romance</option>
             </select>
 
+                <!-- Campo de búsqueda -->
+        <div id="searchInput">
+            <input type="text" id="search" placeholder="Buscar por título">
+            <button id="searchBtn">Buscar</button>
+        </div>
+
             <!-- Botones de género -->
             <div>
                 <button class="btnFiltro" data-genero="Animación">Animación</button>
@@ -30,19 +36,15 @@
                 <button class="btnFiltro" data-genero="Drama">Drama</button>
                 <button class="btnFiltro" data-genero="Romance">Romance</button>
             </div>
-
+            
             <!-- Botones para ordenar -->
             <div id="sortButtons">
                 <button id="sortAsc">Ordenar por Año Ascendente</button>
                 <button id="sortDesc">Ordenar por Año Descendente</button>
             </div>
-        </div>
-
-        <!-- Campo de búsqueda -->
-        <div id="searchInput">
-            <input type="text" id="search" placeholder="Buscar por título">
-            <button id="searchBtn">Buscar</button>
-        </div>
+            
+            
+        </div>       
 
         <!-- Mensaje de no resultados -->
         <div id="noResults">

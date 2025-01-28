@@ -1,6 +1,7 @@
+/* Estilos base para pantallas grandes (sin cambios) */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+    background-color: #000050;
     margin: 0;
     padding: 0;
 }
@@ -13,9 +14,9 @@ body {
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #ffffff;
     font-size: 36px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 #filters {
@@ -35,32 +36,39 @@ h1 {
 }
 
 #filters button {
-    background-color: #4CAF50;
+    background-color: #3c8f42;
     color: white;
     border: none;
 }
 
 #filters button:hover {
-    background-color: #45a049;
+    background-color: #d1d1ff;
+    color: #000050;
+    transition: 0.4s;
+}
+
+.btnFiltro {
+    margin-left: 5px;
 }
 
 #sortButtons {
     display: flex;
-    gap: 10px; /* Espaciado entre los botones de ordenación */
+    gap: 10px;
 }
 
 #sortButtons button {
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #f44336; /* Color diferente para los botones de ordenación */
+    background-color: #3c8f42;
     color: white;
     cursor: pointer;
 }
 
 #sortButtons button:hover {
-    background-color: #d32f2f; /* Cambiar a un tono más oscuro al hacer hover */
+    background-color: #d1d1ff;
+    color: #000050;
+    transition: 0.4s;
 }
 
 #searchInput {
@@ -81,16 +89,17 @@ h1 {
     font-size: 16px;
     border-radius: 5px;
     border: none;
-    background-color: #4CAF50;
+    background-color: #3c8f42;
     color: white;
     cursor: pointer;
 }
 
 #searchInput button:hover {
-    background-color: #45a049;
+    background-color: #d1d1ff;
+    color: #000050;
+    transition: 0.4s;
 }
 
-/* Grid para las películas */
 .movie-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -112,15 +121,12 @@ h1 {
     transform: scale(1.05);
 }
 
-/* Estilo general para las imágenes */
 .movie-item img {
-    width: 100%;           /* El ancho se adapta al contenedor */
-    height: 425px;         /* Altura fija de 425px */
-    object-fit: cover;     /* Ajusta la imagen sin deformarse */
-    border-top-left-radius: 8px;    /* Bordes redondeados */
+    width: 100%;
+    height: 425px;
+    object-fit: cover;
     border-top-left-radius: 8px;
 }
-
 
 .movie-info {
     padding: 15px;
@@ -139,10 +145,93 @@ h1 {
     color: #777;
 }
 
-/* Mensaje de "No hay resultados" */
 #noResults {
     text-align: center;
     color: #555;
     font-size: 18px;
     display: none;
 }
+
+/* Media Query para pantallas pequeñas (mobile-first) */
+@media screen and (max-width: 767px) {
+    .container {
+        width: 90%; /* Aumentamos el tamaño del contenedor en pantallas pequeñas */
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 28px; /* Reducimos el tamaño del encabezado */
+        margin-bottom: 30px;
+    }
+
+    #filters {
+        flex-direction: column; /* Los filtros estarán en columna */
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    #filters select, #filters button, #searchInput input, #searchInput button {
+        font-size: 14px;
+        padding: 8px;
+        width: 100%; /* Hacemos que los botones y entradas ocupen el 100% del ancho */
+    }
+
+    #searchInput {
+        display: flex;
+        flex-direction: row; /* Los elementos dentro del buscador estarán en columna */
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+
+    #sortButtons {
+        display: flex;
+        flex-direction: column; /* Los botones de ordenación estarán en columna */
+        gap: 10px;
+        width: 100%; /* Aseguramos que ocupen el 100% del ancho */
+        margin-top: 10px;
+    }
+
+    .movie-grid {
+        grid-template-columns: 1fr; /* Solo una columna para las películas en pantallas pequeñas */
+    }
+
+    .movie-info h3 {
+        font-size: 16px; /* Reducimos el tamaño de los títulos */
+    }
+
+    .movie-info .genre,
+    .movie-info .year {
+        font-size: 12px; /* Reducimos el tamaño de los géneros y años */
+    }
+
+    .btnFiltro {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .movie-item img {
+        height: auto;
+    }
+
+    
+}
+
+/* Mantener estilos para pantallas medianas (tabletas) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        width: 80%;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas para pantallas medianas */
+    }
+
+    .movie-item img {
+        height: auto; /* Altura intermedia de las imágenes */
+    }
+}
+
+/* Para pantallas grandes, ya está tu diseño tal como está */
