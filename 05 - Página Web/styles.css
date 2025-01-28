@@ -49,6 +49,10 @@ h1 {
 
 .btnFiltro {
     margin-left: 5px;
+    padding: 10px;
+    font-size: 16px;
+    gap: 10px;
+    height: auto;
 }
 
 #sortButtons {
@@ -72,6 +76,11 @@ h1 {
 }
 
 #searchInput {
+    display: flex;
+    gap: 10px;
+}
+
+#botones {
     display: flex;
     gap: 10px;
 }
@@ -185,6 +194,12 @@ h1 {
         margin-top: 10px;
     }
 
+    #botones {
+        
+        flex-direction: column; /* Los elementos dentro del buscador estarán en columna */
+        width: 100%;
+    }
+
 
     #sortButtons {
         display: flex;
@@ -210,6 +225,7 @@ h1 {
     .btnFiltro {
         margin-left: 0;
         margin-top: 10px;
+        
     }
 
     .movie-item img {
