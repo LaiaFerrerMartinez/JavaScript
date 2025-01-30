@@ -9,10 +9,22 @@ function getPeliculas() {
     alert("PASO 1");
     /*fetch()
         .then()
-        .then()
+        .then(
+            (data) => {
+                
+            }
+        )
         .catch() */
     fetch(GET_PELICULAS)  // http://127.0.0.1:3000/peliculas
         .then(response => response.json())
-        .then()
+        .then(
+            (data) => {
+                let idPelicula = data[0].id;
+                let tituloPelicula = data[0].titulo;
+                let directorPelicula = data[0].director;
+                let anioPelicula = data[0].anio;
+                let generoPelicula = data[0].genero;
+            }
+        )
         .catch()    
 }
