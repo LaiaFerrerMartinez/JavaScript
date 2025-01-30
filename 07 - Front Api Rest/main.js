@@ -7,4 +7,12 @@ const GET_USUARIOS = API_URL + "/usuarios/:id";
 
 function getPeliculas() {
     alert("PASO 1");
+    /*fetch()
+        .then()
+        .then()
+        .catch() */
+    fetch(GET_PELICULAS)  // http://127.0.0.1:3000/peliculas
+        .then(response => response.json())
+        .then()
+        .catch()    
 }
