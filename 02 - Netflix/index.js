@@ -1,8 +1,8 @@
 // API REST
 
 // IMPORTS EN JAVA
-const express = require("express");
-const { Pool } = require("pg");
+const express = require("express");  // API REST -> NODE JS CON EXPRESS
+const { Pool } = require("pg");  // HABLAR BD PG DE AWS (pgAdmin4)
 const cors = require("cors");
 
 // INSTANCIAR LOS OBJETOS QUE NECESITAMOS
@@ -26,7 +26,7 @@ const pool = new Pool({
 // Obtener todas las películas
 app.get("/peliculas", async (req, res) => {
   try {
-    const { rows } = await pool.query("SELECT * FROM peliculas;");
+    const { rows } = await pool.query("SELECT * FROM peliculas1;");
     res.json(rows);
   } catch (error) {
     console.error('Error al obtener películas:', error);
@@ -38,7 +38,7 @@ app.get("/peliculas", async (req, res) => {
 app.get("/peliculas/:title", async (req, res) => {
   const titulo = req.params.title;
   try {
-    const { rows } = await pool.query("SELECT * FROM peliculas WHERE titulo = $1;", [titulo]);
+    const { rows } = await pool.query("SELECT * FROM peliculas1 WHERE titulo = $1;", [titulo]);
     if (rows.length === 0) {
       return res.status(404).send('Película no encontrada');
     }
@@ -57,7 +57,7 @@ app.post("/peliculas", async (req, res) => {
   }
   try {
     const { rows } = await pool.query(
-      "INSERT INTO peliculas (id, titulo, director, anio, genero) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      "INSERT INTO peliculas1 (id, titulo, director, anio, genero) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [id, titulo, director, anio, genero]
     );
     res.status(201).json(rows[0]);
@@ -75,7 +75,7 @@ app.put("/peliculas", async (req, res) => {
   }
   try {
     const { rows } = await pool.query(
-      "UPDATE peliculas SET titulo = $2, director = $3, anio = $4, genero = $5 WHERE id = $1 RETURNING *",
+      "UPDATE peliculas1 SET titulo = $2, director = $3, anio = $4, genero = $5 WHERE id = $1 RETURNING *",
       [id, titulo, director, anio, genero]
     );
     if (rows.length === 0) {
@@ -105,7 +105,7 @@ app.listen(port, () => {
 
 app.get("/peliculas", async (req, res) => {
     const { genero } = req.query;  // Obtenemos el género de la query string
-    let query = "SELECT * FROM peliculas";  // Consulta base
+    let query = "SELECT * FROM peliculas1";  // Consulta base
     let params = [];
   
     if (genero) {
