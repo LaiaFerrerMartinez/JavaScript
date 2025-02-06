@@ -34,6 +34,31 @@
                         // QUERY.PARAMS
                         // PATH.PARAMS
                         const {username, password} = req.body;
+                        const sqlQuery = ""
+                            sqlQuery+="SELECT ";
+                            sqlQuery+="FROM USUARIOS ";
+                            sqlQuery+="WHERE USERNAME = $1";
+                            sqlQuery+="AND";
+                            sqlQuery+="PASSWORD = $2;";
+                            const result = pool.query(sqlQuery, [username, password]);
+                            const user = result.row[0];
+                                user.username;
+                                user.password;
+                            const respuesta = {message: 'Correcto'};
+                            res.json(respuesta);
+                            res.json({
+                                message: 'Correcto',
+                                username: user.username
+                            });
+
+                        /*
+                            SELECT *
+                            FROM USUARIOS
+                            WHERE
+                                USERNAME = 'ADMIN'
+                                AND
+                                PASSWORD = '1234';
+                        */
                 });
         // DELETE
             // DELETE
