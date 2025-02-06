@@ -1,71 +1,65 @@
-// SIEMPRE 2 OBJETOS
-    // EXPRESS
-    // POOL
-    // Toda petición cliente-servidor lleva implícito dos objetos
-        // request, response
-        const express = require('express');
-        const {Pool} = require('pg');
-        const cors = require("cors");
+const express = require('express');
+const { Pool } = require('pg');
+const cors = require('cors');
 
-        // INSTANCIAR
-        const app = express();
-        const pool = new Pool();
-        const port = 3000;
+// Instanciar Express
+const app = express();
+const port = 3000;  // Aquí estás configurando el puerto 3000
 
-        // CORS
-        app.use(cors());
+// Conexión a la base de datos PostgreSQL
+const pool = new Pool({
+  user: "postgres",
+  host: "netflix-001.c3smyaeku6nl.us-east-1.rds.amazonaws.com",
+  database: "postgres",
+  password: "rerreF_2013",  // Considera usar variables de entorno para seguridad
+  port: 5432,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
-        //JSON
-        app.use(express.json());
+// Configuración de CORS para permitir solicitudes desde el navegador
+app.use(cors());
 
-        // GETTER
-            // SELECT
-            app.get('/api/peliculas?USER=A&PASSWORD=1234', async(req, res) => {
+// Middleware para parsear JSON
+app.use(express.json());
 
-            });
-        // PUT
-            // UPDATE
-        // POST
-            // INSERT
-                // LOGIN
-                app.post('/api/login', async(req, res) => {
-                    // RECUPERAR PARÁMETROS SI CORRESPONDE
-                        // BODY.PARAMS
-                        // QUERY.PARAMS
-                        // PATH.PARAMS
-                        const {username, password} = req.body;
-                        const sqlQuery = ""
-                            sqlQuery+="SELECT ";
-                            sqlQuery+="FROM USUARIOS ";
-                            sqlQuery+="WHERE USERNAME = $1";
-                            sqlQuery+="AND";
-                            sqlQuery+="PASSWORD = $2;";
-                            const result = pool.query(sqlQuery, [username, password]);
-                            const user = result.row[0];
-                                user.username;
-                                user.password;
-                            const respuesta = {message: 'Correcto'};
-                            res.json(respuesta);
-                            res.json({
-                                message: 'Correcto',
-                                username: user.username
-                            });
+// Ruta para login (POST)
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
 
-                        /*
-                            SELECT *
-                            FROM USUARIOS
-                            WHERE
-                                USERNAME = 'ADMIN'
-                                AND
-                                PASSWORD = '1234';
-                        */
-                });
-        // DELETE
-            // DELETE
+  if (!username || !password) {
+    return res.status(400).json({ message: 'Faltan datos de login' });
+  }
 
+  try {
+    // Consulta para verificar el usuario y la contraseña en la base de datos
+    const sqlQuery = `
+      SELECT * FROM usuarios 
+      WHERE username = $1 AND password = $2
+    `;
+    
+    const result = await pool.query(sqlQuery, [username, password]);
 
+    // Si no se encuentra el usuario
+    if (result.rows.length === 0) {
+      return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
+    }
 
+    const user = result.rows[0];
 
-            app.listen(port, () => {
-                console.log(`Servidor corriendo en http://localhost:${port}`);
-              });
+    // Respuesta exitosa
+    res.json({
+      message: 'Login correcto',
+      username: user.username
+    });
+  } catch (err) {
+    console.error('Error en la consulta:', err);
+    res.status(500).json({ message: 'Error en el servidor' });
+  }
+});
+
+// Iniciar servidor
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});
