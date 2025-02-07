@@ -14,9 +14,8 @@ let peliculasFiltradas = [];
 let peliculasFavoritasFiltradas = []; // Guardar las favoritas filtradas
 const usuarioId = 1; // Cambiar esto por el ID del usuario autenticado
 
-// Función principal para cargar datos y configurar la página
 function inicializar() {
-    fetch('http://localhost:3000/peliculas')  // Asegúrate de que esta URL es la correcta
+    fetch('http://localhost:3000/peliculas')
     .then(response => response.json())
     .then(data => {
         peliculas = data;
@@ -27,7 +26,6 @@ function inicializar() {
     })
     .catch(error => console.error('Error:', error));
 
-    // Cargar favoritos del usuario
     cargarFavoritos();
 }
 
@@ -69,6 +67,11 @@ function mostrarPeliculas(lista) {
     lista.forEach(pelicula => {
         const li = document.createElement("li");
         const esFavorita = peliculasFavoritasFiltradas.some(p => p.pelicula_id === pelicula.pelicula_id);
+        const corazonClass = esFavorita ? "fas fa-heart" : "far fa-heart";
+const corazonStyle = esFavorita 
+    ? "background-color: #1c1c2c; color: white; padding: 5px; font-size:24px" 
+    : "background-color: #1c1c2c; color: white; padding: 5px; font-size:24px";
+
 
         li.innerHTML = `
             <div class="pelicula-contenedor">
@@ -81,24 +84,25 @@ function mostrarPeliculas(lista) {
                     <p>Año: ${pelicula.pelicula_anio}</p>
                     <p>Descripción: ${pelicula.pelicula_descripcion}</p>
                     <p>Saga: ${pelicula.saga_nombre || 'No aplica'}</p>
-                    <p>Director: ${pelicula.director_nombre || 'Desconocido'}</p>
-                    <button class="favorito-btn" data-pelicula-id="${pelicula.pelicula_id}">
-                        ${esFavorita ? "Eliminar de favoritos" : "Añadir a favoritos"}
-                    </button>
+                    <button class="favorito-btn" data-pelicula-id="${pelicula.pelicula_id}" style="background-color: black; border: none;">
+    <i class="${corazonClass}" style="${corazonStyle}"></i>
+</button>
+
                 </div>
             </div>
         `;
         listadoPeliculas.appendChild(li);
     });
 
-    const botonesFavoritos = document.querySelectorAll('.favorito-btn');
-    botonesFavoritos.forEach(boton => {
+    document.querySelectorAll('.favorito-btn').forEach(boton => {
         boton.addEventListener('click', (event) => {
-            const peliculaId = event.target.getAttribute('data-pelicula-id');
-            if (event.target.textContent === "Añadir a favoritos") {
-                agregarAFavoritos(peliculaId);
-            } else {
+            const peliculaId = event.target.closest('button').getAttribute('data-pelicula-id');
+            const esFavorita = peliculasFavoritasFiltradas.some(p => p.pelicula_id == peliculaId);
+
+            if (esFavorita) {
                 eliminarDeFavoritos(peliculaId);
+            } else {
+                agregarAFavoritos(peliculaId);
             }
         });
     });
@@ -113,9 +117,8 @@ function agregarAFavoritos(peliculaId) {
         body: JSON.stringify({ usuario_id: usuarioId, pelicula_id: peliculaId })
     })
     .then(response => response.json())
-    .then(data => {
-        alert("Película añadida a favoritos!");
-        cargarFavoritos(); // Recargar los favoritos
+    .then(() => {
+        cargarFavoritos();
     })
     .catch(error => {
         console.error('Error al añadir a favoritos:', error);
@@ -125,45 +128,26 @@ function agregarAFavoritos(peliculaId) {
 
 function cargarFavoritos() {
     fetch(`http://localhost:3000/favoritos/${usuarioId}`)
-    .then(response => response.json())
-    .then(data => {
-        peliculasFavoritasFiltradas = data; // Guardar las películas favoritas
-        mostrarPeliculas(peliculasFiltradas); // Mostrar todas las películas inicialmente
-    })
-    .catch(error => console.error('Error al cargar favoritos:', error));
-}
+        .then(response => response.json())
+        .then(data => {
+            console.log("Favoritos cargados:", data); // 🔍 Debugging
+            peliculasFavoritasFiltradas = Array.isArray(data) ? data : [];
 
-function mostrarFavoritos(favoritos) {
-    peliculasFavoritas.innerHTML = "";
-    favoritos.forEach(pelicula => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-            <div class="pelicula-contenedor">
-                <div class="pelicula-imagen">
-                    <img src="${pelicula.pelicula_imagen_url}" alt="${pelicula.pelicula_titulo}">
-                </div>
-                <div class="pelicula-detalles">
-                    <h2>${pelicula.pelicula_titulo}</h2>
-                    <p>Género: ${pelicula.genero_titulo}</p>
-                    <p>Año: ${pelicula.pelicula_anio}</p>
-                    <p>Descripción: ${pelicula.pelicula_descripcion}</p>
-                    <p>Saga: ${pelicula.saga_nombre || 'No aplica'}</p>
-                    <p>Director: ${pelicula.director_nombre || 'Desconocido'}</p>
-                    <button class="eliminar-favorito-btn" data-pelicula-id="${pelicula.pelicula_id}">Eliminar de favoritos</button>
-                </div>
-            </div>
-        `;
-        peliculasFavoritas.appendChild(li);
-    });
-
-    const botonesEliminarFavorito = document.querySelectorAll('.eliminar-favorito-btn');
-    botonesEliminarFavorito.forEach(boton => {
-        boton.addEventListener('click', (event) => {
-            const peliculaId = event.target.getAttribute('data-pelicula-id');
-            eliminarDeFavoritos(peliculaId);
+            // 🔥 Solo mostrar favoritos si el botón está activado
+            if (filtrarFavoritosBtn.classList.contains("activo")) {
+                mostrarPeliculas(peliculasFavoritasFiltradas);
+            } else {
+                mostrarPeliculas(peliculasFiltradas.length > 0 ? peliculasFiltradas : peliculas);
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar favoritos:', error);
+            mostrarPeliculas(peliculasFiltradas.length > 0 ? peliculasFiltradas : peliculas);
         });
-    });
 }
+
+
+
 
 function eliminarDeFavoritos(peliculaId) {
     fetch('http://localhost:3000/favoritos', {
@@ -174,9 +158,8 @@ function eliminarDeFavoritos(peliculaId) {
         body: JSON.stringify({ usuario_id: usuarioId, pelicula_id: peliculaId })
     })
     .then(response => response.json())
-    .then(data => {
-        alert("Película eliminada de favoritos.");
-        cargarFavoritos(); // Recargar los favoritos
+    .then(() => {
+        cargarFavoritos();  // Recargar la lista de favoritos inmediatamente
     })
     .catch(error => {
         console.error('Error al eliminar de favoritos:', error);
@@ -211,10 +194,39 @@ function ordenarPeliculas(ascendente = true) {
     mostrarPeliculas(peliculasFiltradas);
 }
 
-// Función para mostrar solo películas favoritas
+function actualizarVistaPeliculas() {
+    const contenedorMensaje = document.getElementById("contenedorMensaje");
+    
+    if (filtrarFavoritosBtn.classList.contains("activo")) {
+        if (peliculasFavoritasFiltradas.length > 0) {
+            mostrarPeliculas(peliculasFavoritasFiltradas);
+            contenedorMensaje.innerHTML = '';  // Limpiar mensaje
+        } else {
+            contenedorMensaje.innerHTML = 'No tienes ninguna película en favoritos.';
+            listadoPeliculas.innerHTML = '';  // Limpiar listado de películas
+        }
+    } else {
+        // 🔴 SOLUCIÓN: Mostramos todas las películas cuando NO se filtran favoritos
+        if (peliculasFiltradas.length > 0) {
+            mostrarPeliculas(peliculasFiltradas);
+            contenedorMensaje.innerHTML = '';  // Limpiar mensaje
+        } else if (peliculas.length > 0) {
+            mostrarPeliculas(peliculas);
+            contenedorMensaje.innerHTML = '';  // Limpiar mensaje
+        } else {
+            contenedorMensaje.innerHTML = 'No hay películas disponibles.';
+            listadoPeliculas.innerHTML = '';  // Limpiar listado de películas
+        }
+    }
+}
+
+
 filtrarFavoritosBtn.addEventListener("click", () => {
-    mostrarPeliculas(peliculasFavoritasFiltradas); // Filtra y muestra solo las favoritas
+    filtrarFavoritosBtn.classList.toggle("activo");
+    actualizarVistaPeliculas(); // Llamamos a la función que gestiona qué películas mostrar
 });
+
+
 
 buscarBtn.addEventListener("click", buscarPorTitulo);
 ordenarAscBtn.addEventListener("click", () => ordenarPeliculas(true));

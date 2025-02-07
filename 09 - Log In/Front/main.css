@@ -22,6 +22,25 @@ body {
     padding: 0px 0;
 }
 
+#contenedorFiltros {
+    /* Asegúrate de que los filtros estén en la parte superior */
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px; /* Espacio entre los filtros y el mensaje */
+}
+
+#contenedorMensaje {
+    color: white;  /* Color blanco */
+    font-size: 30px;  /* Tamaño de fuente 30px */
+    font-weight: bold;
+    text-align: center;  /* Centrado horizontal */
+    margin-bottom: 20px;  /* Espacio entre el mensaje y las películas */
+    width: 100%;  /* Ocupa todo el ancho disponible */
+}
+
+
+
+
 /* Cambié el max-width de main y los márgenes */
 main {
     max-width: 1600px;  /* Aumenté el ancho máximo de la página */
