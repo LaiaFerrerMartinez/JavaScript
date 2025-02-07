@@ -1,0 +1,777 @@
+@font-face {
+    font-family: "Alhadara";
+    src: url(/tipografias/cinematic_language/Cinematic-Language.ttf);
+}
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #1c1c2c;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0px 0;
+}
+
+/* Cambié el max-width de main y los márgenes */
+main {
+    max-width: 1600px;  /* Aumenté el ancho máximo de la página */
+    margin: 0 auto;     /* Sigue centrado */
+    padding: 0 40px;    /* Reduje los márgenes laterales */
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Centra todo el contenido dentro del header */
+    padding: 30px 0px;  /* Márgenes laterales estándar */
+    background-color: #1d1d2c;
+    margin-bottom: 0px;
+    width: 100%;
+    
+}
+header .logo {
+    margin-right: 60px; /* Espacio entre el logo y el menú */
+    width: 40px; /* Ajusta a 40px para hacerlo más pequeño */
+    height: auto; /* Mantiene las proporciones de la imagen */
+    position: relative;
+    vertical-align: middle;
+}
+
+header img {
+    width: 100%; /* La imagen será flexible */
+    max-width: 160px; /* Limitar el tamaño máximo del logo más pequeño */
+    height: auto;
+    margin-left: 100px;
+    margin-right: 60px;
+    position: relative;
+}
+
+
+
+#filtros {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1; /* Esto hace que ocupe el máximo espacio disponible */
+    justify-content: center; /* Centra los elementos dentro de #filtros */
+}
+
+#menu {
+    display: flex;
+    gap: 45px;
+    align-items: center;
+}
+
+#menu ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+#menu ul li {
+    margin-right: 30px;
+}
+
+#menu ul li a {
+    text-decoration: none;
+    
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+#menu ul li a:hover {
+    color: #99e9ffe2;
+}
+
+
+
+#extras {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 50px; /* Alinea a la derecha */
+}
+
+#extras input,
+#extras button {
+    padding: 8px 10px;
+    font-size: 0.91rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+#extras button {
+    background-color: #6ad0ed8e;
+    color: #fff;
+    font-style: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+#extras button:hover {
+    background-color: #319bb88e;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#foto-usuario {
+    width: 65px; /* Ajusta el tamaño deseado */
+    height: auto; /* Mantiene las proporciones de la imagen */
+    margin-left: 60px;
+}
+
+/*Galeria Imagenes*/
+
+#carrusel-caja {
+    -moz-animation: automatizacion 25s infinite linear;
+    -o-animation: automatizacion 25s infinite linear;
+    -webkit-animation: automatizacion 25s infinite linear;
+    animation: automatizacion 25s infinite linear;
+    -webkit-transition: all 0.75s ease;
+    -moz-transition: all 0.75s ease;
+    -ms-transition: all 0.75s ease;
+    -o-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+    height: auto;
+    width: 500%;
+    margin: 0 auto;
+    margin-top: 0px;
+    overflow: hidden;
+}
+#carrusel-contenido {
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: left;
+    margin-bottom: 45px;
+    border-top: 8px solid #14141f; /* Borde sólido alrededor */
+    border-bottom: 8px solid #14141f; /* Borde sólido alrededor */
+    border-right: 8px solid #14141f; /* Borde sólido alrededor */
+    border-left: 8px solid #14141f; /* Borde sólido alrededor */
+    border-top-right-radius: 8px solid #14141f; /* Borde sólido alrededor */
+    border-top-left-radius: 8px solid #14141f; /* Borde sólido alrededor */
+    border-bottom-right-radius: 8px solid #14141f; /* Borde sốlido alrededor */
+    border-bottom-left-radius: 8px solid #14141f; /* Borde más pequeño alrededor */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); /* Sombra para resaltar */
+    border-radius: 30px;
+}
+
+.imagenes {
+    height: 600px;
+    width: 100%;
+    object-fit: cover; /* Asegura que las imágenes se ajusten bien al contenedor */
+    display: block;
+    overflow: hidden;
+    
+}
+
+.carrusel-elemento {
+    
+    width: 20%;
+    float: left;
+}
+
+@-moz-keyframes automatizacion {
+    0% {
+        margin-left: 0;
+    }
+    20% {
+        margin-left: 0;
+    }
+    25% {
+        margin-left: -100%;
+    }
+    45% {
+        margin-left: -100%;
+    }
+    50% {
+        margin-left: -200%;
+    }
+    70% {
+        margin-left: -200%;
+    }
+    75% {
+        margin-left: -300%;
+    }
+    90% {
+        margin-left: -300%;
+    }
+    95% {
+        margin-left: -400%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+@-webkit-keyframes automatizacion {
+    0% {
+        margin-left: 0;
+    }
+    20% {
+        margin-left: 0;
+    }
+    25% {
+        margin-left: -100%;
+    }
+    45% {
+        margin-left: -100%;
+    }
+    50% {
+        margin-left: -200%;
+    }
+    70% {
+        margin-left: -200%;
+    }
+    75% {
+        margin-left: -300%;
+    }
+    90% {
+        margin-left: -300%;
+    }
+    95% {
+        margin-left: -400%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+@keyframes automatizacion {
+    0% { margin-left: 0; }
+    18% { margin-left: 0; }
+    
+    22% { margin-left: -100%; }
+    40% { margin-left: -100%; }
+
+    44% { margin-left: -200%; }
+    62% { margin-left: -200%; }
+
+    66% { margin-left: -300%; }
+    84% { margin-left: -300%; }
+
+    88% { margin-left: -400%; }
+    95% { margin-left: -400%; } /* Mantiene la última imagen unos segundos */
+    
+    100% { margin-left: 0; } /* Regresa suavemente a la primera */
+}
+
+/* Filtros de género y botones de acceso rápido */
+#filtros2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    margin-top: 0px;
+}
+
+#filtros2 label {
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ffffff;
+    margin-right: 20px;
+}
+#filtros2 select {
+    padding: 8px 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    border: 2px solid #ccc;
+    outline: none; /* Elimina el contorno azul al hacer clic en el select */
+    margin-right: 17px;
+    background-color: #f4f4f4;
+    color: #125062;
+    cursor: pointer;
+}
+#filtros2 option {
+    background-color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #270000;
+    padding: 50px;
+}
+#accesos-rapidos {
+    display: flex;
+    gap: 10px;
+    margin-left: 0px;
+}
+#accesos-rapidos button {
+    background-color: #6ad0ed8e;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#accesos-rapidos button:hover {
+    background-color: #319bb88e;
+}
+
+
+/* Movie List */
+#listado-peliculas {
+    margin-top: 20px;
+    padding-left: 0;  /* Eliminamos el margen izquierdo */
+}
+
+ul#peliculas {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Establecemos 6 columnas por defecto */
+    gap: 10px; /* Espacio entre las tarjetas */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul#peliculas li {
+    text-align: center;
+    text-align: justify;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #1c1c2c;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    margin: 0; /* Eliminamos márgenes adicionales */
+}
+
+ul#peliculas li:hover {
+    transform: translateY(-10px);
+}
+
+/* Contenedor principal de cada tarjeta */
+.pelicula-contenedor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Imagen ocupa todo el espacio superior y es responsiva */
+.pelicula-imagen img {
+    width: 100%;
+    height: 360px; /* Ajusta la altura automáticamente en relación al ancho */
+    max-width: 100%; /* Limita el ancho máximo para evitar que exceda el contenedor */
+    object-fit: cover; /* Ajusta la imagen sin distorsión */
+    border-radius: 8px; /* Opcional: bordes redondeados */
+}
+
+
+/* Detalles de la película debajo */
+.pelicula-detalles {
+    padding: 10px;
+}
+
+.pelicula-detalles h2 {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.pelicula-detalles p {
+    font-size: 0.9em;
+    margin: 2px 0;
+    color: #fff;
+}
+
+/* Message when no movies found */
+#mensaje-estado {
+    text-align: center;
+    color: #1d1d2c;
+    font-size: 1rem;
+    font-weight: bold;
+    display: none;
+}
+
+
+/* Media queries para adaptabilidad */
+@media (min-width: 1700px) {
+    header img {
+        margin-left: 150px;  /* Reducir el margen izquierdo para acercar la imagen al menú */
+        margin-right: 20px;  /* Reducir el margen derecho */
+    }
+
+    #filtros {
+        gap: 60px;  /* Reducir el gap entre los filtros */
+    }
+
+    #menu {
+        gap: 40px;  /* Reducir el espacio entre los elementos del menú */
+    }
+
+    #menu ul li {
+        margin-right: 60px;  /* Reducir el espacio entre los elementos de la lista */
+    }
+
+    #extras {
+        margin-right: 150px;  /* Reducir el margen derecho */
+    }
+}
+
+@media (max-width: 1400px) {
+    header {
+        flex-direction: column; /* Cambia a diseño vertical */
+        align-items: center; /* Centra todos los elementos */
+        padding: 20px;
+    }
+
+    header img {
+        margin: 0 auto; /* Centra el logo */
+    }
+
+    #menu {
+        display: none; /* Oculta el menú en pantallas pequeñas */
+    }
+
+    #menu ul {
+        flex-direction: column; /* Cambia el menú a una columna vertical */
+        gap: 10px;
+        background-color: #1d1d2c;
+        padding: 15px;
+        border-radius: 4px;
+        display: none; /* El menú estará inicialmente oculto */
+    }
+
+    #menu ul li {
+        margin-right: 0;
+    }
+
+    #menu ul li a {
+        font-size: 1rem;
+    }
+
+    /* Menú mostrado al hacer clic */
+    #menu.mostrar {
+        display: flex; /* Muestra el menú al activarlo */
+    }
+
+    #extras {
+        flex-wrap: wrap; /* Permite que los elementos se ajusten a múltiples filas si es necesario */
+        justify-content: center;
+        margin-left: 0;
+        gap: 15px;
+    }
+
+    #extras input,
+    #extras button {
+        width: 100%; /* Los elementos ocupan todo el ancho disponible */
+        text-align: center;
+    }
+    #filtros2 {
+        flex-direction: column; /* Cambia el layout a columna */
+        align-items: flex-start; /* Alinea los elementos al inicio */
+        gap: 15px; /* Más espacio entre elementos */
+        margin-left: 0; /* Ajusta el margen izquierdo */
+    }
+
+    #filtros2 label {
+        font-size: 1rem; /* Reduce un poco el tamaño de fuente */
+        margin-right: 0;
+    }
+
+    #filtros2 select {
+        width: 100%; /* Ocupar todo el ancho disponible */
+        margin-right: 0; /* Elimina márgenes laterales */
+    }
+
+    #accesos-rapidos {
+        width: 100%; /* Asegura que los botones se distribuyan en todo el ancho */
+        justify-content: space-between; /* Espacia los botones */
+        flex-wrap: wrap; /* Permite que los botones ocupen más de una línea si es necesario */
+    }
+
+    #accesos-rapidos button {
+        width: calc(50% - 5px); /* Ajusta el ancho de cada botón para que encaje en 2 columnas */
+        margin: 5px 0px; /* Agrega espacio vertical entre los botones */
+    }
+    #trailers-contenedor {
+        gap: 15px; /* Reduce el espacio entre los videos */
+    }
+
+    .trailer {
+        max-width: 500px; /* Ajusta ligeramente el tamaño en pantallas más pequeñas */
+    }
+    
+}
+@media (min-width: 1200px) {
+    main {
+        margin: 0 auto; /* Centra el contenido en pantallas grandes */
+    }
+    #listado-peliculas{
+        width: 100%;
+    }
+    #trailers-contenedor {
+        gap: 0px; /* Reduce el espacio entre los videos */
+    }
+
+    .trailer {
+        margin-top: 20px;
+        max-width: 600px; /* Ajusta ligeramente el tamaño en pantallas más pequeñas */
+    }
+    #proximamente h2 {
+        font-size: 3rem;
+    }
+    #reseñas h2 {
+        font-size: 3rem;
+    }
+}
+
+/* Para pantallas medianas (tablets) */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header img {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+        height: 100px;
+        width: 200px;
+        max-height: 200px; /* Ajustar la altura máxima */
+    }
+
+    header .logo {
+        height: 200px; /* Hacer el logo aún más pequeño en pantallas muy pequeñas */
+    }
+    .imagenes{
+        height: 300px;
+        width: 100%;
+    }
+    /* Ajuste específico para centrar #filtros */
+    #filtros {
+        flex-direction: column; /* Cambiamos el layout a columna */
+        align-items: center; /* Centra verticalmente */
+        justify-content: center; /* Centra horizontalmente */
+        gap: 10px; /* Espacio entre los elementos */
+        margin-left: 50px;
+    }
+
+    #menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    ul#peliculas {
+        grid-template-columns: repeat(4, 1fr); /* Cambiamos a 4 columnas */
+    }
+    .pelicula-imagen img {
+        height: 300px; /* Ajustamos la altura de las imágenes */
+    }
+    #trailers-contenedor {
+        flex-direction: column; /* Videos apilados verticalmente */
+        gap: 20px; /* Espacio adicional entre videos */
+    }
+
+    .trailer {
+        max-width: 85%; /* Permite que ocupen todo el ancho si es necesario */
+    }
+    #proximamente h2 {
+        font-size: 3rem;
+    }
+    #reseñas h2 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header img {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+        height: 100px;
+        width: 200px;
+        max-height: 200px; /* Ajustar la altura máxima */
+    }
+
+    header .logo {
+        height: 200px; /* Hacer el logo aún más pequeño en pantallas muy pequeñas */
+    }
+    .imagenes{
+        height: 200px;
+        width: 100%;
+    }
+    
+    /* Ajuste específico para centrar #filtros */
+    #filtros {
+        flex-direction: column; /* Cambiamos el layout a columna */
+        align-items: center; /* Centra verticalmente */
+        justify-content: center; /* Centra horizontalmente */
+        gap: 10px; /* Espacio entre los elementos */
+        margin-left: 50px;
+    }
+
+    #menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    #filtros {
+        padding: 10px;
+    }
+
+    ul#peliculas {
+        grid-template-columns: 1fr; /* En pantallas pequeñas las películas ocuparán toda la columna */
+    }
+
+    ul#peliculas li {
+        padding: 10px;
+    }
+
+    select, #buscar, button {
+        font-size: 0.9rem;
+        width: 100%;
+    }
+    .pelicula-imagen img {
+        height: 550px; /* Reducimos aún más la altura */
+    }
+    .pelicula-detalles h2 {
+        font-size: 1.3rem; /* Ajustamos el tamaño del título */
+    }
+    .pelicula-detalles p {
+        font-size: 0.9rem; /* Ajustamos el tamaño del texto */
+    }
+    .trailer {
+        max-width: 100%; /* Videos ocupan todo el ancho del contenedor */
+    }
+    #proximamente h2 {
+        font-size: 2rem;
+    }
+    #reseñas h2 {
+        font-size: 2rem;
+    }
+    .contenedor-reseñas {
+        grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
+    }
+    
+}
+/* Para pantallas muy pequeñas (móviles pequeños) */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header img {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+        height: 100px;
+        width: 200px;
+        max-height: 200px; /* Ajustar la altura máxima */
+    }
+
+    header .logo {
+        height: 200px; /* Hacer el logo aún más pequeño en pantallas muy pequeñas */
+    }
+
+    .imagenes{
+        height: 200px;
+        width: 100%;
+    }
+    /* Ajuste específico para centrar #filtros */
+    #filtros {
+        flex-direction: column; /* Cambiamos el layout a columna */
+        align-items: center; /* Centra verticalmente */
+        justify-content: center; /* Centra horizontalmente */
+        gap: 10px; /* Espacio entre los elementos */
+        margin-left: 50px;
+    }
+
+    #menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul#peliculas {
+        grid-template-columns: 1fr; /* Una columna */
+    }
+    .pelicula-imagen img {
+        height: 500px; /* Imagen más compacta */
+    }
+   
+    .pelicula-detalles {
+        padding: 8px; /* Menos espacio de padding */
+    }
+    .pelicula-detalles h2 {
+        font-size: 1.2rem; /* Títulos más pequeños */
+    }
+    .pelicula-detalles p {
+        font-size: 0.9rem;
+    }
+    #seccion-trailer {
+        padding: 40px;
+    }
+    #proximamente h2 {
+        font-size: 2rem;
+    }
+    #reseñas h2 {
+        font-size: 2rem;
+    }
+    #trailers-contenedor {
+        padding: 0 15px; /* Márgenes laterales */
+    }
+
+    .trailer {
+        max-width: 100%; /* Ocupar todo el ancho disponible */
+        padding-bottom: 20%; 
+    }
+    
+    .trailer-info {
+        padding: 15px;
+        margin-top: 10px;
+        width: 100%;
+        max-width: 560px;
+        margin-bottom: 0px;
+    }
+    .trailer-info h3 {
+        font-size: 18px;
+    }
+    
+    /* Ajuste de texto en la info */
+    .trailer-info p {
+        font-size: 14px;
+    }
+}
+@media (max-width: 200px) {
+    .imagenes{
+        height: 200px;
+        width: 100%;
+    }
+}
+@media (max-width: 1399px) {
+    #foto-usuario {
+        display: none; /* Oculta la imagen cuando el ancho de la pantalla sea menor a 800px */
+    }
+}

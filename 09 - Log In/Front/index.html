@@ -1,22 +1,77 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="main.js" defer></script> <!-- Asegúrate de que el script se ejecute después de la carga de la página -->
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Disney+</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
-    <h1>Login</h1>
-    <form id="loginForm">
-        <label for="username">Nombre de usuario:</label>
-        <input type="text" id="username" required>
-        <br>
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" required>
-        <br>
-        <button type="submit">Iniciar sesión</button>
-    </form>
+    <header>
+        <a href="#filtros2"> <!-- Este enlace llevará al inicio de la página -->
+            <img src="./imagenes/disney-plus-logo.png"  alt="logo"> 
+        </a>
+        <section id="filtros">
+            <!-- Menú al lado de la imagen -->
+            <nav id="menu">
+                <ul>
+                    <li><a href="#filtros2">Inicio</a></li>
+                    <li><a href="#seccion-trailer">Trailers</a></li>
+                    <li><a href="#seccion-trailer">Favoritos</a></li>
+                </ul>
+            </nav>
+            <!-- Búsqueda y Ordenación -->
+            <div id="extras">
+                <input type="text" id="buscar" placeholder="Buscar por título..."/> <!---Barra de Busqueda-->
+                <button id="buscar-button">Buscar</button>
+                <button id="ordenar-ascendente">Ordenar por Año ↓</button>
+                <button id="ordenar-descendente">Ordenar por Año ↑</button>
+                <img src="https://archive.org/download/49_20210404/122.png" id="foto-usuario" alt="usuario">
+            </div>
+        </section>
+    </header>
+    <main>
+        <!-- Gallery de imágenes con transición -->
+        <div id="carrusel-contenido">
+            <div id="carrusel-caja">
+                <div class="carrusel-elemento">   
+                    <img class="imagenes" src="https://estadodeltiempo.mx/wp-content/uploads/2022/01/Spider-Man-No-Way-Home-la-mas-taquillera-en-Mexico.jpg">
+                </div>
+                <div class="carrusel-elemento">
+                    <img class="imagenes" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/AC4EF589A48EC49C08087D28E2DF30C18197F80C2B94AF10493A83F69465590A/scale?width=1200&aspectRatio=1.78&format=webp" > 
+                </div>
+                <div class="carrusel-elemento">   
+                    <img class="imagenes" src="./imagenes/blancanieves.jpg">               
+                </div>
+                <div class="carrusel-elemento">   
+                    <img class="imagenes" src="https://static.posters.cz/image/hp/75998.jpg">     
+                </div>
+                <div class="carrusel-elemento">   
+                    <img class="imagenes" src="https://cinefilosoficial.com/wp-content/uploads/2019/04/portada-8.jpg">                   
+                </div>
+                
+            </div>
+        </div>
+        <section id="filtros2">
+            <!-- Filtrar por Género -->
+            <label for="genero">Filtrar Por Género:</label> <!---Etiqueta-->
+            <select id="genero">
+                <option value="todos">Todos</option> <!---Desplegable de Opciones, por defecto Todos, los adicionales se cargarán dinámicamente desde JSON-->
+            </select>
+            <!-- Botones de accesos rápidos -->
+            <div id="accesos-rapidos"></div> <!---Se cargarán dinámicamente botones para filtrar por genero desde JSON (Animacion,Accion...)-->
+        </section>
+        
+        <!-- Listado de Películas -->
+        <section id="listado-peliculas">
+            <ul id="peliculas"></ul>  <!-- Aquí se listarán las películas desde JSON-->
+        </section>
+        <!-- Mensaje cuando no se encuentran películas -->
+
+        <p id="mensaje-estado" style="display: none;">No se encontraron películas con los criterios seleccionados.</p>
+        
+    </main>
+    <script src='main.js'></script>
 </body>
 </html>
