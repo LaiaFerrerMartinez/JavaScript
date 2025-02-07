@@ -8,7 +8,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
     // Enviar la solicitud al servidor
     try {
-        const response = await fetch('http://localhost:3001/api/login', {
+        const response = await fetch('http://localhost:3000/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         const data = await response.json();
         if (response.ok) {
             // Redirigir a la página principal
-            window.location.href = "https://ainhoaagarciia.github.io/Node-24-25/004-DisneyApp-Front/index.html";
+            window.location.href = "index.html";
         } else {
             alert('Error: ' + data.message);
         }

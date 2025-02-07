@@ -65,6 +65,6 @@ app.post('/api/login', async (req, res) => {
 });
 
 // Iniciar el servidor
-const server = app.listen(3001, () => {
-  console.log(`Servidor corriendo en http://localhost:3001`);
+const server = app.listen(3000, () => {
+  console.log(`Servidor corriendo en http://localhost:3000`);
 });

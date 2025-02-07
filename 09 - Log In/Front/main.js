@@ -13,7 +13,7 @@ let peliculasFiltradas = [];
 
 // Función principal para cargar datos y configurar la página
 function inicializar() {
-    fetch('http://localhost:3001/peliculas')  // Asegúrate de que esta URL es la correcta
+    fetch('http://localhost:3000/peliculas')  // Asegúrate de que esta URL es la correcta
     .then(response => response.json())
     .then(data => {
         peliculas = data;  // Guardamos las películas obtenidas de la API
