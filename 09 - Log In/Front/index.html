@@ -18,13 +18,16 @@
                 <ul>
                     <li><a href="#filtros2">Inicio</a></li>
                     <li><a href="#seccion-trailer">Trailers</a></li>
-                    <li><a href="#seccion-trailer">Favoritos</a></li>
+                    <li><a href="#favoritos">Favoritos</a></li>
                 </ul>
             </nav>
             <!-- Búsqueda y Ordenación -->
             <div id="extras">
                 <input type="text" id="buscar" placeholder="Buscar por título..."/> <!---Barra de Busqueda-->
                 <button id="buscar-button">Buscar</button>
+                <!-- Añadir un botón para filtrar favoritos -->
+                <button id="filtrar-favoritos">Favoritos</button>
+
                 <button id="ordenar-ascendente">Ordenar por Año ↓</button>
                 <button id="ordenar-descendente">Ordenar por Año ↑</button>
                 <img src="https://archive.org/download/49_20210404/122.png" id="foto-usuario" alt="usuario">
@@ -50,9 +53,9 @@
                 <div class="carrusel-elemento">   
                     <img class="imagenes" src="https://cinefilosoficial.com/wp-content/uploads/2019/04/portada-8.jpg">                   
                 </div>
-                
             </div>
         </div>
+
         <section id="filtros2">
             <!-- Filtrar por Género -->
             <label for="genero">Filtrar Por Género:</label> <!---Etiqueta-->
@@ -67,9 +70,10 @@
         <section id="listado-peliculas">
             <ul id="peliculas"></ul>  <!-- Aquí se listarán las películas desde JSON-->
         </section>
-        <!-- Mensaje cuando no se encuentran películas -->
 
+        <!-- Mensaje cuando no se encuentran películas -->
         <p id="mensaje-estado" style="display: none;">No se encontraron películas con los criterios seleccionados.</p>
+
         
     </main>
     <script src='main.js'></script>

@@ -402,6 +402,95 @@ ul#peliculas li:hover {
 }
 
 
+
+/* Efecto al pasar el mouse por encima de una película en favoritos */
+ul#peliculas-favoritos li:hover {
+    transform: translateY(-10px);
+}
+
+/* Contenedor interno de la tarjeta de película favorita */
+.pelicula-favorito-contenedor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Estilo de la imagen de la película favorita */
+.pelicula-favorito-imagen img {
+    width: 100%;
+    height: 360px; /* Ajusta la altura automáticamente en relación al ancho */
+    max-width: 100%; /* Limita el ancho máximo para evitar que exceda el contenedor */
+    object-fit: cover; /* Ajusta la imagen sin distorsión */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Detalles de la película favorita debajo de la imagen */
+.pelicula-favorito-detalles {
+    padding: 10px;
+}
+
+.pelicula-favorito-detalles h2 {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.pelicula-favorito-detalles p {
+    font-size: 0.9em;
+    margin: 2px 0;
+    color: #fff;
+}
+
+
+
+#listado-peliculas {
+    margin-top: 20px;
+    padding-left: 0;  /* Eliminamos el margen izquierdo */
+}
+
+ul#peliculas-favoritas {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Establecemos 6 columnas por defecto */
+    gap: 10px; /* Espacio entre las tarjetas */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul#peliculas-favoritas li {
+    text-align: center;
+    text-align: justify;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #1c1c2c;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    margin: 0; /* Eliminamos márgenes adicionales */
+}
+
+ul#peliculas-favoritas li:hover {
+    transform: translateY(-10px);
+}
+
+/* Contenedor principal de cada tarjeta */
+.pelicula-favorito-contenedor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Imagen ocupa todo el espacio superior y es responsiva */
+.pelicula-favorito-imagen img {
+    width: 100%;
+    height: 360px; /* Ajusta la altura automáticamente en relación al ancho */
+    max-width: 100%; /* Limita el ancho máximo para evitar que exceda el contenedor */
+    object-fit: cover; /* Ajusta la imagen sin distorsión */
+    border-radius: 8px; /* Opcional: bordes redondeados */
+}
+
+
+
+
 /* Media queries para adaptabilidad */
 @media (min-width: 1700px) {
     header img {
@@ -775,3 +864,4 @@ ul#peliculas li:hover {
         display: none; /* Oculta la imagen cuando el ancho de la pantalla sea menor a 800px */
     }
 }
+

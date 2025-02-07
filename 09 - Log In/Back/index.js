@@ -42,25 +42,88 @@ app.get("/peliculas", async (req, res) => {
   }
 });
 
-// Rutas para el servidor de login
-app.post('/api/login', async (req, res) => {
-  const { nombre_usuario, password } = req.body;
+// Ruta para obtener favoritos de un usuario
+app.get("/favoritos/:usuario_id", async (req, res) => {
+  const { usuario_id } = req.params;
 
-  if (!nombre_usuario || !password) {
-    return res.status(400).json({ message: 'Faltan datos de login' });
+  try {
+    const { rows } = await pool.query(`
+      SELECT p.id AS pelicula_id, 
+             p.titulo AS pelicula_titulo, 
+             p.descripcion AS pelicula_descripcion, 
+             p.anio AS pelicula_anio, 
+             g.titulo AS genero_titulo, 
+             s.nombre AS saga_nombre, 
+             p.imagen_url AS pelicula_imagen_url
+      FROM favoritos f
+      INNER JOIN peliculas p ON f.pelicula_id = p.id
+      LEFT JOIN generos g ON p.genero_id = g.id
+      LEFT JOIN sagas s ON p.saga_id = s.id
+      WHERE f.usuario_id = $1;
+    `, [usuario_id]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: 'No se encontraron favoritos' });
+    }
+
+    res.json(rows);
+  } catch (error) {
+    console.error('Error al obtener favoritos:', error);
+    res.status(500).send('Error interno del servidor');
+  }
+});
+
+// Ruta para añadir película a favoritos
+app.post("/favoritos", async (req, res) => {
+  const { usuario_id, pelicula_id } = req.body;
+
+  if (!usuario_id || !pelicula_id) {
+    return res.status(400).json({ message: 'Faltan datos para agregar a favoritos' });
   }
 
   try {
-    const sqlQuery = `SELECT * FROM USUARIOS WHERE nombre_usuario = $1 AND password = $2`;
-    const result = await pool.query(sqlQuery, [nombre_usuario, password]);
-    if (result.rows.length === 0) {
-      return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
+    const checkExistenceQuery = `
+      SELECT 1 FROM favoritos WHERE usuario_id = $1 AND pelicula_id = $2
+    `;
+    const checkResult = await pool.query(checkExistenceQuery, [usuario_id, pelicula_id]);
+
+    if (checkResult.rows.length > 0) {
+      return res.status(400).json({ message: 'La película ya está en favoritos' });
     }
 
-    res.json({ message: 'Login correcto', nombre_usuario: result.rows[0].nombre_usuario });
-  } catch (err) {
-    console.error('Error en la consulta:', err);
-    res.status(500).json({ message: 'Error en el servidor' });
+    await pool.query(
+      `INSERT INTO favoritos (usuario_id, pelicula_id) VALUES ($1, $2)`,
+      [usuario_id, pelicula_id]
+    );
+    res.status(200).json({ message: 'Película añadida a favoritos' });
+  } catch (error) {
+    console.error('Error al añadir a favoritos:', error);
+    res.status(500).send('Error interno del servidor');
+  }
+});
+
+// Ruta para eliminar película de favoritos
+app.delete("/favoritos", async (req, res) => {
+  const { usuario_id, pelicula_id } = req.body;
+
+  if (!usuario_id || !pelicula_id) {
+    return res.status(400).json({ message: 'Faltan datos para eliminar de favoritos' });
+  }
+
+  try {
+    const result = await pool.query(
+      `DELETE FROM favoritos WHERE usuario_id = $1 AND pelicula_id = $2`,
+      [usuario_id, pelicula_id]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: 'No se encontró la película en favoritos' });
+    }
+
+    res.status(200).json({ message: 'Película eliminada de favoritos' });
+  } catch (error) {
+    console.error('Error al eliminar de favoritos:', error);
+    res.status(500).send('Error interno del servidor');
   }
 });
 
