@@ -42,6 +42,28 @@ app.get("/peliculas", async (req, res) => {
   }
 });
 
+// Ruta para login (POST)
+app.post('/api/login', async (req, res) => {
+  const { nombre_usuario, password } = req.body;
+
+  if (!nombre_usuario || !password) {
+    return res.status(400).json({ message: 'Faltan datos de login' });
+  }
+
+  try {
+    const sqlQuery = `SELECT * FROM USUARIOS WHERE nombre_usuario = $1 AND password = $2`;
+    const result = await pool.query(sqlQuery, [nombre_usuario, password]);
+    if (result.rows.length === 0) {
+      return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
+    }
+
+    res.json({ message: 'Login correcto', nombre_usuario: result.rows[0].nombre_usuario });
+  } catch (err) {
+    console.error('Error en la consulta:', err);
+    res.status(500).json({ message: 'Error en el servidor' });
+  }
+});
+
 // Ruta para obtener favoritos de un usuario
 app.get("/favoritos/:usuario_id", async (req, res) => {
   const { usuario_id } = req.params;
