@@ -1,31 +1,36 @@
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
-    console.log('Formulario enviado');  // Verifica si el evento de submit se está ejecutando
-    event.preventDefault();  // Previene el comportamiento por defecto del formulario (recargar la página)
-    
-    // Obtener los valores de los campos
-    const nombre_usuario = document.getElementById('nombre_usuario').value;
-    const password = document.getElementById('password').value;
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    // Enviar la solicitud al servidor
-    try {
-        const response = await fetch('http://localhost:3000/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ nombre_usuario, password })
-        });
+    const usuario = document.getElementById('nombre_usuario').value.trim();
+    const contrasenia = document.getElementById('password').value.trim();
 
-        const data = await response.json();
-        if (response.ok) {
-            // Redirigir a la página principal
-            window.location.href = "index.html";
-        } else {
-            alert('Error: ' + data.message);
-        }
-    } catch (error) {
-        console.error('Error al enviar la solicitud:', error);
-        alert('Hubo un problema al intentar iniciar sesión.');
+    if (!usuario || !contrasenia) {
+        alert("Por favor, complete ambos campos.");
+        return;
     }
-});
 
+    fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ usuario: usuario, contrasenia: contrasenia })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response from server:', data);
+
+        if (data.success) {
+            // Guardamos los datos en localStorage
+            localStorage.setItem('userId', data.userId); // Guardamos el ID
+            localStorage.setItem('userName', data.nombre_usuario); // Guardamos el nombre de usuario
+            window.location.href = 'index.html'; // Redirigir al perfil
+        } else {
+            alert('Login Fallido: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("Ocurrió un error al procesar la solicitud.");
+    });
+});

@@ -16,6 +16,13 @@ const pool = new Pool({
   },
 });
 
+app.get("/usuarios", async (req, res)=>{
+  const {rows} = await pool.query(
+      "SELECT * FROM USUARIOS;"
+  );
+  res.json(rows);
+});
+
 // Middleware común
 app.use(express.json());
 app.use(cors());
@@ -43,30 +50,48 @@ app.get("/peliculas", async (req, res) => {
 });
 
 // Ruta para login (POST)
-app.post('/api/login', async (req, res) => {
-  const { nombre_usuario, password } = req.body;
+app.post("/api/login", async (req, res) => { // Asegúrate de usar "/api/login"
+  const { usuario, contrasenia } = req.body;
 
-  if (!nombre_usuario || !password) {
-    return res.status(400).json({ message: 'Faltan datos de login' });
+  if (!usuario || !contrasenia) {
+      return res.status(400).json({ message: 'Faltan datos de login' });
   }
 
   try {
-    const sqlQuery = `SELECT * FROM USUARIOS WHERE nombre_usuario = $1 AND password = $2`;
-    const result = await pool.query(sqlQuery, [nombre_usuario, password]);
-    if (result.rows.length === 0) {
-      return res.status(401).json({ message: 'Usuario o contraseña incorrectos' });
-    }
+      // Buscamos en la base de datos si el usuario y la contraseña coinciden
+      const { rows } = await pool.query(
+          "SELECT * FROM USUARIOS WHERE nombre_usuario = $1 AND password = $2",  // Verifica las columnas correctamente
+          [usuario, contrasenia]
+      );
 
-    res.json({ message: 'Login correcto', nombre_usuario: result.rows[0].nombre_usuario });
-  } catch (err) {
-    console.error('Error en la consulta:', err);
-    res.status(500).json({ message: 'Error en el servidor' });
+      if (rows.length > 0) {
+          const user = rows[0];
+
+          // Si se encuentran los datos, pasamos el id del usuario junto con el nombre
+          res.json({
+              success: true,
+              userId: user.id,            // El id del usuario
+              nombre_usuario: user.nombre_usuario, // El nombre de usuario
+          });
+      } else {
+          res.json({ success: false, message: "Usuario o contraseña incorrectos" });
+      }
+  } catch (error) {
+      console.error("Error durante el login:", error);
+      res.status(500).json({ success: false, message: "Error interno del servidor" });
   }
 });
-
 // Ruta para obtener favoritos de un usuario
 app.get("/favoritos/:usuario_id", async (req, res) => {
-  const { usuario_id } = req.params;
+  let { usuario_id } = req.params;
+
+  // Convertir el usuario_id a un número entero
+  usuario_id = parseInt(usuario_id, 10);
+
+  // Validar que el usuario_id es un número válido
+  if (isNaN(usuario_id)) {
+    return res.status(400).json({ message: 'El ID de usuario no es válido.' });
+  }
 
   try {
     const { rows } = await pool.query(`
@@ -97,9 +122,17 @@ app.get("/favoritos/:usuario_id", async (req, res) => {
 
 // Ruta para añadir película a favoritos
 app.post("/favoritos", async (req, res) => {
-  const { usuario_id, pelicula_id } = req.body;
+  let { usuario_id, pelicula_id } = req.body;
 
-  if (!usuario_id || !pelicula_id) {
+  // Convertir el usuario_id a un número entero
+  usuario_id = parseInt(usuario_id, 10);
+
+  // Validar que el usuario_id es un número válido
+  if (isNaN(usuario_id)) {
+    return res.status(400).json({ message: 'El ID de usuario no es válido.' });
+  }
+
+  if (!pelicula_id) {
     return res.status(400).json({ message: 'Faltan datos para agregar a favoritos' });
   }
 
@@ -126,9 +159,17 @@ app.post("/favoritos", async (req, res) => {
 
 // Ruta para eliminar película de favoritos
 app.delete("/favoritos", async (req, res) => {
-  const { usuario_id, pelicula_id } = req.body;
+  let { usuario_id, pelicula_id } = req.body;
 
-  if (!usuario_id || !pelicula_id) {
+  // Convertir el usuario_id a un número entero
+  usuario_id = parseInt(usuario_id, 10);
+
+  // Validar que el usuario_id es un número válido
+  if (isNaN(usuario_id)) {
+    return res.status(400).json({ message: 'El ID de usuario no es válido.' });
+  }
+
+  if (!pelicula_id) {
     return res.status(400).json({ message: 'Faltan datos para eliminar de favoritos' });
   }
 
@@ -148,6 +189,7 @@ app.delete("/favoritos", async (req, res) => {
     res.status(500).send('Error interno del servidor');
   }
 });
+
 
 // Iniciar el servidor
 const server = app.listen(3000, () => {

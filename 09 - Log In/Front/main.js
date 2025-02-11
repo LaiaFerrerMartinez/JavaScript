@@ -12,7 +12,20 @@ const filtrarFavoritosBtn = document.getElementById("filtrar-favoritos");
 let peliculas = [];
 let peliculasFiltradas = [];
 let peliculasFavoritasFiltradas = []; // Guardar las favoritas filtradas
-const usuarioId = 1; // Cambiar esto por el ID del usuario autenticado
+// Recuperar el usuarioId desde localStorage y asegurarse de que es un número entero
+console.log(localStorage);
+const usuarioId = parseInt(localStorage.getItem('usuarioId'), 10);
+
+if (isNaN(usuarioId)) {
+    console.error('El usuarioId no es un número válido');
+    console.log(usuarioId);
+    // Aquí puedes hacer algo, por ejemplo, redirigir al login o mostrar un mensaje de error.
+} else {
+    // Continuar con la lógica
+    console.log('Usuario autenticado con ID:', usuarioId);
+}
+
+
 
 function inicializar() {
     fetch('http://localhost:3000/peliculas')
