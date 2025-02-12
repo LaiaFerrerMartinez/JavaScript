@@ -456,11 +456,7 @@ ul#peliculas-favoritos li:hover {
     border: none;
     padding: 10px;
     cursor: pointer;
-    border-radius: 50%;
-    opacity: 0; /* Inicialmente oculto */
-    visibility: hidden; /* Inicialmente no visible */
-    
-    
+    border-radius: 50%; 
 }
 
 .pelicula-contenedor:hover .favorito-btn {
@@ -475,7 +471,7 @@ ul#peliculas-favoritos li:hover {
 
 .favorito-btn i {
     font-size: 24px;
-    transition: background-color 0.2s ease-in, transform 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in, transform 0.2s ease-in, transform 0.05s ease-out;
 }
 
 
@@ -577,6 +573,7 @@ ul#peliculas-favoritas li:hover {
     #extras {
         margin-right: 150px;  /* Reducir el margen derecho */
     }
+    
 }
 
 @media (max-width: 1400px) {
