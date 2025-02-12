@@ -12,17 +12,17 @@ const filtrarFavoritosBtn = document.getElementById("filtrar-favoritos");
 let peliculas = [];
 let peliculasFiltradas = [];
 let peliculasFavoritasFiltradas = []; // Guardar las favoritas filtradas
-// Recuperar el usuarioId desde localStorage y asegurarse de que es un número entero
+// Recuperar el userId desde localStorage y asegurarse de que es un número entero
 console.log(localStorage);
-const usuarioId = parseInt(localStorage.getItem('usuarioId'), 10);
+const userId = localStorage.getItem('userId');
 
-if (isNaN(usuarioId)) {
-    console.error('El usuarioId no es un número válido');
-    console.log(usuarioId);
+if (isNaN(userId)) {
+    console.error('El userId no es un número válido');
+    console.log(userId);
     // Aquí puedes hacer algo, por ejemplo, redirigir al login o mostrar un mensaje de error.
 } else {
     // Continuar con la lógica
-    console.log('Usuario autenticado con ID:', usuarioId);
+    console.log('Usuario autenticado con ID:', userId);
 }
 
 
@@ -127,7 +127,7 @@ function agregarAFavoritos(peliculaId) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ usuario_id: usuarioId, pelicula_id: peliculaId })
+        body: JSON.stringify({ usuario_id: userId, pelicula_id: peliculaId })
     })
     .then(response => response.json())
     .then(() => {
@@ -140,7 +140,7 @@ function agregarAFavoritos(peliculaId) {
 }
 
 function cargarFavoritos() {
-    fetch(`http://localhost:3000/favoritos/${usuarioId}`)
+    fetch(`http://localhost:3000/favoritos/${userId}`)
         .then(response => response.json())
         .then(data => {
             console.log("Favoritos cargados:", data); // 🔍 Debugging
@@ -168,7 +168,7 @@ function eliminarDeFavoritos(peliculaId) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ usuario_id: usuarioId, pelicula_id: peliculaId })
+        body: JSON.stringify({ usuario_id: userId, pelicula_id: peliculaId })
     })
     .then(response => response.json())
     .then(() => {
