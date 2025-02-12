@@ -434,6 +434,51 @@ ul#peliculas-favoritos li:hover {
     height: 100%;
 }
 
+.pelicula-detalles {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+}
+
+.favoritos-container {
+    display: flex;
+    justify-content: space-around; /* O usa space-between */
+    width: 100%;
+}
+
+.favorito-btn {
+    flex: 1; /* Hace que cada botón ocupe el mismo espacio */
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    background-color: #1c1c2c;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0; /* Inicialmente oculto */
+    visibility: hidden; /* Inicialmente no visible */
+    
+    
+}
+
+.pelicula-contenedor:hover .favorito-btn {
+    opacity: 1; /* Cuando el contenedor tiene hover, el botón es visible */
+    visibility: visible; /* Hacer visible el botón */
+    transition: transform 0.2s ease-in-out;
+}
+
+.favorito-btn:hover i{
+    transform: scale(1.3); /* Agrandado */
+}
+
+.favorito-btn i {
+    font-size: 24px;
+    transition: background-color 0.2s ease-in, transform 0.2s ease-in-out;
+}
+
+
 /* Estilo de la imagen de la película favorita */
 .pelicula-favorito-imagen img {
     width: 100%;

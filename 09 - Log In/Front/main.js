@@ -81,12 +81,12 @@ function mostrarPeliculas(lista) {
         const li = document.createElement("li");
         const esFavorita = peliculasFavoritasFiltradas.some(p => p.pelicula_id === pelicula.pelicula_id);
         const corazonClass = esFavorita ? "fas fa-heart" : "far fa-heart";
-const corazonStyle = esFavorita 
-    ? "background-color: #1c1c2c; color: white; padding: 5px; font-size:24px" 
-    : "background-color: #1c1c2c; color: white; padding: 5px; font-size:24px";
+        const corazonStyle = esFavorita 
+            ? "background-color: #1c1c2c; color: white; font-size:24px" 
+            : "background-color: #1c1c2c; color: white; font-size:24px";
 
 
-        li.innerHTML = `
+            li.innerHTML = `
             <div class="pelicula-contenedor">
                 <div class="pelicula-imagen">
                     <img src="${pelicula.pelicula_imagen_url}" alt="${pelicula.pelicula_titulo}">
@@ -97,13 +97,15 @@ const corazonStyle = esFavorita
                     <p>Año: ${pelicula.pelicula_anio}</p>
                     <p>Descripción: ${pelicula.pelicula_descripcion}</p>
                     <p>Saga: ${pelicula.saga_nombre || 'No aplica'}</p>
-                    <button class="favorito-btn" data-pelicula-id="${pelicula.pelicula_id}" style="background-color: black; border: none;">
-    <i class="${corazonClass}" style="${corazonStyle}"></i>
-</button>
-
+                    <div class="favoritos-container">
+                        <button class="favorito-btn" data-pelicula-id="${pelicula.pelicula_id}">
+                            <i class="${corazonClass}" style="${corazonStyle}"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
+        
         listadoPeliculas.appendChild(li);
     });
 
