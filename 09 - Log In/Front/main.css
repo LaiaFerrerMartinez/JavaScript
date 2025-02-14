@@ -157,6 +157,31 @@ header img {
     margin-left: 60px;
 }
 
+.ver-trailer-container button {
+    padding: 8px 10px;
+    font-size: 0.91rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.ver-trailer-container button {
+    background-color: #6ad0ed8e;
+    color: #fff;
+    font-style: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.ver-trailer-container button:hover {
+    background-color: #319bb88e;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 /*Galeria Imagenes*/
 
 #carrusel-caja {
@@ -561,7 +586,7 @@ ul#peliculas-favoritas li:hover {
   #trailers-section h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #ffcc00;
+    color: #6ad0ed8e;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
@@ -607,7 +632,7 @@ ul#peliculas-favoritas li:hover {
   
   .trailer-card button {
     margin-top: 10px;
-    background-color: #ffcc00;
+    background-color: white;
     color: #000;
     padding: 10px;
     border: none;
@@ -618,7 +643,7 @@ ul#peliculas-favoritas li:hover {
   }
   
   .trailer-card button:hover {
-    background-color: #f39c12;
+    background-color: white;
   }
   
   #movie-trailer {
@@ -666,7 +691,7 @@ ul#peliculas-favoritas li:hover {
   .trailer-right h2 {
     font-size: 28px;
     margin-bottom: 10px;
-    color: #ffcc00;
+    color: white;
   }
   
   .trailer-right p {
@@ -677,7 +702,7 @@ ul#peliculas-favoritas li:hover {
   
   .trailer-right p strong {
     font-weight: bold;
-    color: #ffcc00;
+    color: white;
   }
 
 
