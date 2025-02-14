@@ -27,7 +27,7 @@ app.get("/usuarios", async (req, res)=>{
 app.use(express.json());
 app.use(cors());
 
-// Rutas para el servidor de películas
+// Obtener lista de películas con trailer_archivo
 app.get("/peliculas", async (req, res) => {
   try {
     const { rows } = await pool.query(`
@@ -37,7 +37,8 @@ app.get("/peliculas", async (req, res) => {
              p.anio AS pelicula_anio, 
              g.titulo AS genero_titulo, 
              s.nombre AS saga_nombre, 
-             p.imagen_url AS pelicula_imagen_url
+             p.imagen_url AS pelicula_imagen_url,
+             p.trailer_archivo AS trailer_archivo
       FROM peliculas p
       INNER JOIN generos g ON p.genero_id = g.id
       LEFT JOIN sagas s ON p.saga_id = s.id;
@@ -48,6 +49,29 @@ app.get("/peliculas", async (req, res) => {
     res.status(500).send('Error interno del servidor');
   }
 });
+
+// Ruta para agregar o actualizar el archivo del trailer de una película
+app.post("/peliculas/trailer", async (req, res) => {
+  const { pelicula_id, trailer_archivo } = req.body;
+
+  if (!pelicula_id || !trailer_archivo) {
+    return res.status(400).json({ message: 'Faltan datos para agregar el trailer' });
+  }
+
+  try {
+    await pool.query(`
+      UPDATE peliculas
+      SET trailer_archivo = $1
+      WHERE id = $2;
+    `, [trailer_archivo, pelicula_id]);
+
+    res.status(200).json({ message: 'Trailer actualizado correctamente' });
+  } catch (error) {
+    console.error('Error al actualizar el trailer:', error);
+    res.status(500).send('Error interno del servidor');
+  }
+});
+
 
 // Ruta para login (POST)
 app.post("/api/login", async (req, res) => { // Asegúrate de usar "/api/login"

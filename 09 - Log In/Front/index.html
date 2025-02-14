@@ -11,7 +11,7 @@
 <body>
     <header>
         <a href="#filtros2"> <!-- Este enlace llevará al inicio de la página -->
-            <img src="./img/disney-plus-logo.png"  alt="logo"> 
+            <img src="./img/disney-plus-logo.png" alt="logo"> 
         </a>
         <section id="filtros">
             <!-- Menú al lado de la imagen -->
@@ -31,7 +31,10 @@
 
                 <button id="ordenar-ascendente">Ordenar por Año ↓</button>
                 <button id="ordenar-descendente">Ordenar por Año ↑</button>
-                <img src="https://archive.org/download/49_20210404/122.png" id="foto-usuario" alt="usuario">
+                <div id="volverLogin">
+                    <button type="click"><img src="https://archive.org/download/49_20210404/122.png" id="foto-usuario" alt="usuario"></button>
+                </div>
+                
             </div>
         </section>
     </header>
@@ -46,14 +49,12 @@
                     <img class="imagenes" src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/AC4EF589A48EC49C08087D28E2DF30C18197F80C2B94AF10493A83F69465590A/scale?width=1200&aspectRatio=1.78&format=webp" > 
                 </div>
                 <div class="carrusel-elemento">   
-                    <img class="imagenes" src="img/blancanieves.jpg">               
-                </div>
+                    <img class="imagenes" src="img/blancanieves.jpg"></div>
                 <div class="carrusel-elemento">   
                     <img class="imagenes" src="https://static.posters.cz/image/hp/75998.jpg">     
                 </div>
                 <div class="carrusel-elemento">   
-                    <img class="imagenes" src="https://cinefilosoficial.com/wp-content/uploads/2019/04/portada-8.jpg">                   
-                </div>
+                    <img class="imagenes" src="https://cinefilosoficial.com/wp-content/uploads/2019/04/portada-8.jpg">                    </div>
             </div>
         </div>
 
@@ -78,6 +79,19 @@
 
         <!-- Mensaje cuando no se encuentran películas -->
         <p id="mensaje-estado" style="display: none;">No se encontraron películas con los criterios seleccionados.</p>
+
+        <section id="seccion-trailer">
+            <div class="trailer-left">
+              <iframe id="trailer-video" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        
+            <div class="trailer-right">
+              <h2 id="movie-title">Selecciona una película</h2>
+              <p><strong>Año:</strong> <span id="movie-year">--</span></p>
+              <p><strong>Género:</strong> <span id="movie-genre">--</span></p>
+              <p><strong>Sinopsis:</strong> <span id="movie-synopsis">--</span></p>
+            </div>
+          </section>
 
         
     </main>
