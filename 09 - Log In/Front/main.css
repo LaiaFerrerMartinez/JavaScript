@@ -706,8 +706,22 @@ ul#peliculas-favoritas li:hover {
         margin-right: 150px;  /* Reducir el margen derecho */
         padding-right: 0;
     }
+
+    
     
 }
+
+@media (max-width: 1700px) {
+    #filtros {
+        margin-left: 150px;
+    }
+
+    #extras #volverLogin button {
+        margin-left: 0;
+        padding-right: 300px;
+    }
+}
+
 
 @media (max-width: 1400px) {
     header {
