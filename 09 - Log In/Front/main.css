@@ -86,43 +86,13 @@ header img {
     justify-content: center; /* Centra los elementos dentro de #filtros */
 }
 
-#menu {
-    display: flex;
-    gap: 45px;
-    align-items: center;
-}
-
-#menu ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
-
-#menu ul li {
-    margin-right: 30px;
-}
-
-#menu ul li a {
-    text-decoration: none;
-    
-    color: #fff;
-    font-size: 1.25rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-#menu ul li a:hover {
-    color: #99e9ffe2;
-}
-
-
 
 #extras {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-right: 50px; /* Alinea a la derecha */
+    margin-right: 150px; /* Alinea a la derecha */
+    padding-right: 350px;
 }
 
 #extras input,
@@ -132,6 +102,7 @@ header img {
     border-radius: 4px;
     border: 1px solid #ccc;
     outline: none;
+    
 }
 
 #extras button {
@@ -145,11 +116,15 @@ header img {
 }
 
 
+
+
 #extras button:hover {
     background-color: #319bb88e;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+
 
 #foto-usuario {
     width: 65px; /* Ajusta el tamaño deseado */
@@ -322,10 +297,11 @@ header img {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-left: 20px;
     margin-bottom: 40px;
     margin-top: 0px;
+    margin-left: -50px; /* Ajusta este valor según lo que necesites */
 }
+
 
 #filtros2 label {
     font-size: 1.2rem;
@@ -728,6 +704,7 @@ ul#peliculas-favoritas li:hover {
 
     #extras {
         margin-right: 150px;  /* Reducir el margen derecho */
+        padding-right: 0;
     }
     
 }
@@ -798,6 +775,8 @@ ul#peliculas-favoritas li:hover {
         margin-right: 0; /* Elimina márgenes laterales */
     }
 
+    
+
     #accesos-rapidos {
         width: 100%; /* Asegura que los botones se distribuyan en todo el ancho */
         justify-content: space-between; /* Espacia los botones */
@@ -815,9 +794,18 @@ ul#peliculas-favoritas li:hover {
     .trailer {
         max-width: 500px; /* Ajusta ligeramente el tamaño en pantallas más pequeñas */
     }
+
+    #extras {
+        padding-right: 0;
+        margin-right: 0;
+    }
+
+    #extras a {
+        width: 100%;
+    }
     
 }
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
     main {
         margin: 0 auto; /* Centra el contenido en pantallas grandes */
     }
@@ -838,6 +826,16 @@ ul#peliculas-favoritas li:hover {
     #reseñas h2 {
         font-size: 3rem;
     }
+    #extras {
+        padding-right: 0;
+        margin-right: 0;
+    }
+
+    #extras a {
+        width: 100%;
+    }
+
+   
 }
 
 /* Para pantallas medianas (tablets) */
@@ -870,7 +868,7 @@ ul#peliculas-favoritas li:hover {
         align-items: center; /* Centra verticalmente */
         justify-content: center; /* Centra horizontalmente */
         gap: 10px; /* Espacio entre los elementos */
-        margin-left: 50px;
+        margin-left: 0;
     }
 
     #menu ul {
@@ -897,6 +895,14 @@ ul#peliculas-favoritas li:hover {
     }
     #reseñas h2 {
         font-size: 3rem;
+    }
+    #extras {
+        padding-right: 0;
+        margin-right: 0;
+    }
+
+    #extras a {
+        width: 100%;
     }
 }
 
@@ -944,6 +950,7 @@ ul#peliculas-favoritas li:hover {
 
     #filtros {
         padding: 10px;
+        margin-left: 0;
     }
 
     ul#peliculas {
@@ -979,6 +986,15 @@ ul#peliculas-favoritas li:hover {
     .contenedor-reseñas {
         grid-template-columns: 1fr; /* Cambia a una columna en pantallas pequeñas */
     }
+
+    #extras {
+        padding-right: 0;
+        margin-right: 0;
+    }
+
+    #extras a {
+        width: 100%;
+    }
     
 }
 /* Para pantallas muy pequeñas (móviles pequeños) */
@@ -1012,7 +1028,7 @@ ul#peliculas-favoritas li:hover {
         align-items: center; /* Centra verticalmente */
         justify-content: center; /* Centra horizontalmente */
         gap: 10px; /* Espacio entre los elementos */
-        margin-left: 50px;
+        margin-left: 0;
     }
 
     #menu ul {
@@ -1069,6 +1085,17 @@ ul#peliculas-favoritas li:hover {
     .trailer-info p {
         font-size: 14px;
     }
+
+    #extras {
+        padding-right: 0;
+        margin-right: 0;
+        justify-content: 0;
+        margin-left: 0;
+    }
+
+    #extras a {
+        width: 100%;
+    }
 }
 @media (max-width: 200px) {
     .imagenes{
@@ -1089,6 +1116,9 @@ ul#peliculas-favoritas li:hover {
     padding: 10px; /* Ajusta el padding según sea necesario */
     cursor: pointer; /* Cursor tipo puntero cuando el mouse pasa sobre el botón */
     transition: none; /* Desactivamos cualquier transición de hover */
+    position: relative;
+  left: 85px; /* Ajusta el valor según sea necesario */
+  margin-left: 350px;
 }
 
 #volverLogin button:hover {
