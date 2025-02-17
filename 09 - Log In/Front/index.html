@@ -77,17 +77,23 @@
         <p id="mensaje-estado" style="display: none;">No se encontraron películas con los criterios seleccionados.</p>
 
         <section id="seccion-trailer">
-            <div class="trailer-left">
-              <iframe id="trailer-video" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <div id="trailer-container">
+                
+                    <h2 id="movie-title">Selecciona una película</h2>
+                    <p><strong>Año:</strong> <span id="movie-year">--</span></p>
+                    <p><strong>Género:</strong> <span id="movie-genre">--</span></p>
+                    <p><strong>Descripción:</strong> <span id="movie-synopsis">--</span></p>
+                
         
-            <div class="trailer-right">
-              <h2 id="movie-title">Selecciona una película</h2>
-              <p><strong>Año:</strong> <span id="movie-year">--</span></p>
-              <p><strong>Género:</strong> <span id="movie-genre">--</span></p>
-              <p><strong>Sinopsis:</strong> <span id="movie-synopsis">--</span></p>
+                <div class="trailer-right">
+                    <iframe id="trailer-video" width="100%" height=auto frameborder="0" 
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
             </div>
-          </section>
+        </section>
+        
+        
 
         
     </main>
