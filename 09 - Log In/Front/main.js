@@ -226,15 +226,10 @@ function buscarPorTitulo() {
     mostrarPeliculas(peliculasEncontradas);
 }
 
-function ordenarPeliculas(ascendente) {
-    const peliculasOrdenadas = [...peliculasFiltradas].sort((a, b) => {
-        if (ascendente) {
-            return a.pelicula_titulo.localeCompare(b.pelicula_titulo);
-        } else {
-            return b.pelicula_titulo.localeCompare(a.pelicula_titulo);
-        }
-    });
-    mostrarPeliculas(peliculasOrdenadas);
+// Ordenar películas por año
+function ordenarPeliculas(ascendente = true) {
+    peliculasFiltradas.sort((a, b) => (ascendente ? a.pelicula_anio - b.pelicula_anio : b.pelicula_anio - a.pelicula_anio));
+    mostrarPeliculas(peliculasFiltradas);
 }
 
 document.getElementById('volverLogin').addEventListener('click', function(event) {
