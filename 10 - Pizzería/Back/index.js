@@ -18,4 +18,17 @@ app.get("/peliculas", async (req, res) => {
       res.status(500).json({ error: "Error del servidor" });
     }
 });
-  
+
+app.get("/peliculas/generos", async (req, res) => {
+    try {
+        const { rows } = await pool.query (`
+            SELECT * FROM PELICULAS
+                INNER JOIN GENEROS ON genero_id = GENEROS.id
+                WHERE upper (GENEROS.titulo) LIKE 'ANIMACIÓN';`
+        );
+        res.json(rows);
+    } catch (error) {
+        console.error("Error al obtener películas por género:", error);
+        res.status(500).json({ error: "Error del servidor" });
+    }
+})
